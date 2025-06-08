@@ -1,4 +1,5 @@
 3-Tier Architecture Provisioning with Terraform on AWS
+
 Project Overview
 This project provisions a secure, scalable, and highly available 3-tier architecture on AWS using Terraform. The architecture includes a Virtual Private Cloud (VPC), Application Load Balancer (ALB), Auto Scaling groups, EC2 instances, RDS for the database tier, S3 for Terraform state storage, DynamoDB for state locking, AWS Secrets Manager for secure credential management, and Route 53 for DNS configuration.
 Architecture Overview
