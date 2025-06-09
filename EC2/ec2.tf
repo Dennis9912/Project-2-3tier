@@ -66,33 +66,34 @@ resource "aws_instance" "dsa_bastion_host" {
 }
 
 #Configure Private server in az-1A
-resource "aws_instance" "dsa_private_server_az_1a" {
-  ami                    = var.image_id
-  instance_type          = var.instance_type
-  subnet_id              = var.private_subnet_az_1a
-  vpc_security_group_ids = [aws_security_group.dsa_private_sg.id]
-  key_name               = var.key_name
+# resource "aws_instance" "dsa_private_server_az_1a" {
+#   ami                    = var.image_id
+#   instance_type          = var.instance_type
+#   subnet_id              = var.private_subnet_az_1a
+#   vpc_security_group_ids = [aws_security_group.dsa_private_sg.id]
+#   key_name               = var.key_name
 
-  associate_public_ip_address = false  # Ensure instance remains private
+#   associate_public_ip_address = false  # Ensure instance remains private
 
-  tags = merge(var.tags, {
-    Name = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-private-server-az-1a"
-  })
-}
+#   tags = merge(var.tags, {
+#     Name = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-private-server-az-1a"
+#   })
+# }
 
-resource "aws_instance" "dsa_private_server_az_1b" {
-  ami                    = var.image_id
-  instance_type          = var.instance_type
-  subnet_id              = var.private_subnet_az_1b
-  vpc_security_group_ids = [aws_security_group.dsa_private_sg.id]
-  key_name               = var.key_name
+#Configure Private server in az-1B
+# resource "aws_instance" "dsa_private_server_az_1b" {
+#   ami                    = var.image_id
+#   instance_type          = var.instance_type
+#   subnet_id              = var.private_subnet_az_1b
+#   vpc_security_group_ids = [aws_security_group.dsa_private_sg.id]
+#   key_name               = var.key_name
 
-  associate_public_ip_address = false  # Ensure instance remains private
+#   associate_public_ip_address = false  # Ensure instance remains private
 
-  tags = merge(var.tags, {
-    Name = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-private-server-az-1b"
-  })
-}
+#   tags = merge(var.tags, {
+#     Name = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-private-server-az-1b"
+#   })
+# }
 
 #Configure Launch template for private servers
 resource "aws_launch_template" "dsa_private_servers_lt" {
