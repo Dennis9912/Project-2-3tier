@@ -33,7 +33,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 
 #Configure Target Group for Alb
 resource "aws_lb_target_group" "dsa_target_group" {
-  name        = "Target-group"
+  name        = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-Target-group"
   port        = 80
   protocol    = "HTTP"
   target_type = "instance"  # or "ip" or "lambda"
@@ -57,7 +57,7 @@ resource "aws_lb_target_group" "dsa_target_group" {
 
 #Configure Application Load Balancer
 resource "aws_lb" "dsa_alb" {
-  name               = "Alb"
+  name               = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-Alb"
   internal           = false                                                            # Set to true for internal ALBs
   load_balancer_type = "application"
   security_groups    = [aws_security_group.dsa_alb_sg.id]                                  # List of security group IDs

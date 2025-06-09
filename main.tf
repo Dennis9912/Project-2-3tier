@@ -33,3 +33,23 @@ module "asg" {
   key_name               = var.key_name
   tags                   = local.project_tags
 }
+
+module "route-53" {
+  source = "./ROUTE-53"
+  zone_id = var.zone_id
+  domain_name = var.domain_name
+  alb_dns_name = module.alb.alb_dns_name
+  alb_zone_id = module.alb.alb_zone_id
+}
+
+module "ec2" {
+  source = "./EC2"
+  vpc_id = module.vpc.vpc_id
+  public_subnet_az_1a_id = module.vpc.public_subnet_az_1a_id
+  private_subnet_az_1a = module.vpc.private_server_az_1a
+  private_subnet_az_1b = module.vpc.private_subnet_az_1b
+  image_id = var.image_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  tags                   = local.project_tags
+}

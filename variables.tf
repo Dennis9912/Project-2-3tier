@@ -33,3 +33,11 @@ variable "instance_type" {
 variable "key_name" {
   type = string
 }
+
+variable "zone_id" {
+  type = string
+}
+
+variable "domain_name" {
+  type = string
+}

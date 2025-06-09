@@ -41,7 +41,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 
 #Configure Launch template for frontend servers
 resource "aws_launch_template" "dsa_frontend_lt" {
-  name_prefix   = "frontend-template"
+  name_prefix   = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-frontend-lt"
   image_id      = var.image_id                      # Amazon Machine Image ID
   instance_type = var.instance_type                # e.g., t2.micro
   key_name      = var.key_name                     # Optional: SSH key name
@@ -67,7 +67,7 @@ resource "aws_launch_template" "dsa_frontend_lt" {
 
 #Configure Auto Scaling Group
 resource "aws_autoscaling_group" "frontend_asg" {
-  name                      = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-asg"
+  name                      = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-frontend-asg"
   desired_capacity          = 2
   min_size                  = 2
   max_size                  = 4
@@ -83,7 +83,7 @@ resource "aws_autoscaling_group" "frontend_asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-instance"
+    value               = "${var.tags["project"]}-${var.tags["application"]}-${var.tags["environment"]}-frontend-server"
     propagate_at_launch = true
   }
 
