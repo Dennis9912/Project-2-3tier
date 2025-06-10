@@ -17,3 +17,11 @@ output "private_server_az_1a" {
 output "private_subnet_az_1b" {
   value = aws_subnet.dsa_private_subnet_az_1b.id
 } 
+
+output "backend_subnet_az_1a" {
+  value = aws_subnet.dsa_backend_subnet_az_1a.id
+}
+
+output "backend_subnet_az_1b" {
+  value = aws_subnet.dsa_backend_subnet_az_1b.id
+}
