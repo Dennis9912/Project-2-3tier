@@ -41,3 +41,19 @@ variable "zone_id" {
 variable "domain_name" {
   type = string
 }
+
+variable "parameter_group_name" {
+  type = string
+}
+
+variable "allocated_storage" {
+  type = string
+}
+
+variable "instance_class" {
+  type = string
+}
+
+variable "engine_version" {
+  type = string
+}
